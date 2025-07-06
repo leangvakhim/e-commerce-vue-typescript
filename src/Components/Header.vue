@@ -59,6 +59,25 @@
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>
+							<div
+								class="mobile-menu mean-container"
+								:style="menuStyle"
+							>
+								<div class="mean-bar">
+									<a class="meanmenu-reveal meanclose" @click="toggleMobileMenu" style="right: 0px; left: auto; text-align: center; text-indent: 0px; font-size: 18px;">
+									  {{ isMobileMenuVisible ? '☰' : 'X' }}
+									</a>
+									<nav :style="visibleMenu" class="mean-nav">
+										<ul style="display: block;">
+											<li><router-link to="/home">Home</router-link></li>
+											<li><router-link to="/shop">Shop</router-link></li>
+											<li><router-link to="/about">About</router-link></li>
+											<li><router-link to="/contact">Contact</router-link></li>
+											<li><router-link class="shopping-cart" to="/cart"><i class="fas fa-shopping-cart"></i></router-link></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
 						<!-- menu end -->
 					</div>
 				</div>
@@ -68,8 +87,33 @@
 </template>
 <script setup>
 import { useRoute } from "vue-router";
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 
 const route = useRoute();
+
+const width = ref(window.innerWidth);
+const updateWidth = () => width.value = window.innerWidth;
+
+onMounted(() => window.addEventListener('resize', updateWidth));
+onBeforeUnmount(() => window.removeEventListener('resize', updateWidth));
+
+const isMobileMenuVisible = ref(true);
+const menuStyle = computed(() => {
+	return {
+		display: width.value < 1024 ? 'block' : 'none'
+	};
+});
+const visibleMenu = computed(() => {
+	return {
+		display: isMobileMenuVisible.value ? 'none' : 'block'
+	}
+})
+const hideMobileMenu = () => {
+  isMobileMenuVisible.value = false;
+};
+const toggleMobileMenu = () => {
+  isMobileMenuVisible.value = !isMobileMenuVisible.value;
+};
 </script>
 
 <script>
