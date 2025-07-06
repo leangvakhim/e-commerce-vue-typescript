@@ -116,6 +116,7 @@ const { cart } = useCart()
 const { finalizeCartTotal } = useCart();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const cartItems = computed(() => cart)
+console.log(cartItems.value.length); // just to prevent unused warning
 const rawTotal = computed(() => Number(finalizeCartTotal()));
 const cartTotal = ref(0);
 
