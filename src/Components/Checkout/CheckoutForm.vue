@@ -112,9 +112,9 @@ import { useCart } from '../CartContext.vue'
 import Swal from 'sweetalert2';
 
 const { cart } = useCart()
-const { removeFromCart } = useCart();
+// const { removeFromCart } = useCart();
 const { finalizeCartTotal } = useCart();
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const cartItems = computed(() => cart)
 const rawTotal = computed(() => Number(finalizeCartTotal()));
 const cartTotal = ref(0);
