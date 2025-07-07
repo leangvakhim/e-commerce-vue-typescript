@@ -2,9 +2,6 @@
 🛒 E-Commerce Website – Built with TypeScript & Vue.js
 
 
-Project: Online Shopping Website
-
-
 📘 Project Overview
 
 
