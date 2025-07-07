@@ -3,9 +3,6 @@
 
 
 Project: Online Shopping Website
-Frontend: Vue.js (Composition API, SFC) & TypeScript
-Deployment: View Live Site
-Repository: GitHub - leangvakhim
 
 
 📘 Project Overview
